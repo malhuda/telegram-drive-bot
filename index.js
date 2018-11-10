@@ -6,6 +6,7 @@ const constants = require('./.constants.js');
 const msgTools = require('./msg-tools.js');
 const driveList = require('./drive/drive-list.js');
 const driveUtils = require('./drive/drive-utils.js');
+const ping = require('./ping/ping.js');
 
 const options = {
   polling: true
@@ -13,6 +14,7 @@ const options = {
 const bot = new TelegramBot(constants.TOKEN, options);
 var websocketOpened = false;
 var statusInterval;
+var hosts = ['google.com'];
 
 initAria2();
 
@@ -21,6 +23,14 @@ bot.onText(/^\/start/, (msg) => {
     sendUnauthorizedMessage(msg);
   } else {
     sendMessage(msg, 'You should know the commands already. Happy mirroring.');
+  }
+});
+
+bot.onText(/^\/ping/, (msg) => {
+  if (msgTools.isAuthorized(msg) < 0) {
+    sendUnauthorizedMessage(msg);
+  } else {
+    sendMessage(msg, 'Ping is not available right now.');
   }
 });
 
