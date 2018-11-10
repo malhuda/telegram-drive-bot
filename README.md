@@ -1,4 +1,4 @@
-# aria-telegram-mirror-bot
+# telegram-mirror-bot
 
 This is a Telegram bot that uses [aria2](https://github.com/aria2/aria2) to download files over BitTorrent / HTTP(S) and uploads them to your Google Drive. This can be useful for downloading from slow servers. There are some features to try to reduce piracy.
 
@@ -42,7 +42,7 @@ There is very little preventing users from using this to mirror pirated content.
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/out386/aria-telegram-mirror-bot
+   git clone https://github.com/Yash-Garg/telegram-mirror-bot
    cd aria-telegram-mirror-bot
    ```
 
