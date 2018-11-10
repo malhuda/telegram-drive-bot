@@ -40,6 +40,14 @@ bot.onText(/^\/ping/, (msg) => {
   }
 });
 
+bot.onText(/^\/source/, (msg) => {
+  if (msgTools.isAuthorized(msg) < 0) {
+    sendUnauthorizedMessage(msg);
+  } else {
+    sendMessage(msg, 'You can find my source code here : https://github.com/Yash-Garg/telegram-mirror-bot');
+  }
+});
+
 bot.onText(/^\/mirrortar (.+)/i, (msg, match) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
