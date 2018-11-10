@@ -11,10 +11,11 @@ const ping = require('./ping/ping.js');
 const options = {
   polling: true
 };
+
 const bot = new TelegramBot(constants.TOKEN, options);
 var websocketOpened = false;
 var statusInterval;
-var hosts = ['google.com'];
+var hosts = ['https://api.telegram.org'];
 
 initAria2();
 
@@ -30,7 +31,12 @@ bot.onText(/^\/ping/, (msg) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
   } else {
-    sendMessage(msg, 'Ping is not available right now.');
+    ping(hosts).then(function(delta) {
+    sendMessage(msg, 'Ping time was ' + String(delta) + ' ms.');
+    console.log('Starting ping test. Ping time was ' + String(delta) + ' ms');
+    }).catch(function(err) {
+    console.error('Could not ping remote URL', err);
+    });
   }
 });
 
