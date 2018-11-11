@@ -253,7 +253,7 @@ function download (match) {
     });
 }
 
-function sendMessage (msg, text, delay, callback, quickDeleteOriginal) {
+function sendMessage (msg, text, delay, callback) {
   if (!delay) delay = 5000;
   bot.sendMessage(msg.chat.id, text, {
     reply_to_message_id: msg.message_id,
@@ -261,14 +261,6 @@ function sendMessage (msg, text, delay, callback, quickDeleteOriginal) {
   })
     .then((res) => {
       if (callback) callback(res);
-      if (delay > -1) {
-        msgTools.deleteMsg(bot, res, delay);
-        if (quickDeleteOriginal) {
-          msgTools.deleteMsg(bot, msg);
-        } else {
-          msgTools.deleteMsg(bot, msg, delay);
-        }
-      }
     })
     .catch((ignored) => { });
 }
@@ -288,11 +280,6 @@ function sendMessageReplyOriginal (message) {
 function sendStatusMessage (msg) {
   // Skipping 0, which is the reply to the download command message
   var index = downloadUtils.indexOfStatus(msg.chat.id, 1);
-
-  if (index > -1) {
-    msgTools.deleteMsg(bot, dlVars.statusMsgsList[index]);
-    downloadUtils.deleteStatus(index);
-  }
 
   getStatus(msg, (err, text) => {
     if (!err) {
