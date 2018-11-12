@@ -139,13 +139,13 @@ function getStatus (msg, callback) {
   }
 }
 
-bot.onText(/^\/list (.+)/i, (msg, match) => {
+bot.onText(/^\/search (.+)/i, (msg, match) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
   } else {
     driveList.listFiles(match[1], (err, res) => {
       if (err) {
-        sendMessage(msg, 'Failed to fetch the list of files');
+        sendMessage(msg, 'Failed to search the list of files');
       } else {
         sendMessage(msg, res, 60000);
       }
@@ -163,7 +163,7 @@ bot.onText(/^\/getFolder/i, (msg) => {
   }
 });
 
-bot.onText(/^\/cancelMirror/i, (msg) => {
+bot.onText(/^\/stopMirror/i, (msg) => {
   var authorizedCode = msgTools.isAuthorized(msg);
   if (authorizedCode > -1 && authorizedCode < 3) {
     cancelMirror(msg);
