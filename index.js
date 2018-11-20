@@ -166,11 +166,11 @@ bot.onText(/^\/getFolder/i, (msg) => {
 bot.onText(/^\/stopMirror/i, (msg) => {
   var authorizedCode = msgTools.isAuthorized(msg);
   if (authorizedCode > -1 && authorizedCode < 3) {
-    cancelMirror(msg);
+    stopMirror(msg);
   } else if (authorizedCode === 3) {
     msgTools.isAdmin(bot, msg, (e, res) => {
       if (res) {
-        cancelMirror(msg);
+        stopMirror(msg);
       } else {
         sendMessage(msg, 'You do not have the permission to do that.');
       }
@@ -180,7 +180,7 @@ bot.onText(/^\/stopMirror/i, (msg) => {
   }
 });
 
-function cancelMirror (msg) {
+function stopMirror (msg) {
   if (dlVars.isDownloading) {
     if (dlVars.isUploading) {
       if (msg) {
