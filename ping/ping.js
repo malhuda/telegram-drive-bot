@@ -36,9 +36,7 @@
                 resolve(delta); 
             };
             request_image(url).then(response).catch(response);
-            
-            // Set a timeout for max-pings, 5s.
-            setTimeout(function() { reject(Error('Timeout')); }, 5000);
+
         });
     }
     
