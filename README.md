@@ -12,9 +12,9 @@ There is very little preventing users from using this to mirror pirated content.
 
 ### Bot commands
 
-* `/mirror <url>` : Download from the given URL and upload it to Google Drive. <url> can be HTTP(S), a BitTorrent magnet, or a HTTP(S) url to a BitTorrent .torrent file. A status message will be shown and updated while downloading.
+* `/mirrorit <url>` : Download from the given URL and upload it to Google Drive. <url> can be HTTP(S), a BitTorrent magnet, or a HTTP(S) url to a BitTorrent .torrent file. A status message will be shown and updated while downloading.
 * `/mirrorTar <url>` : Same as `/mirror`, but archive multiple files into a tar before uploading it.
-* `/mirrorStatus` : Send a status message about the current download.
+* `/mirroritStatus` : Send a status message about the current download.
 * `/stopMirror` : Cancel the current mirroring task. Only the person who started the task, SUDO_USERS, and chat admins can use this command.
 * `/search <filename>` : Send links to downloads with the `filename` substring in the name. In case of too many downloads, only show the most recent few. 
 * `/source` : Sends the source code of the bot
