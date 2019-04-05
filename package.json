@@ -16,5 +16,6 @@
     "http-range-parse": "^1.0.0",
     "node-telegram-bot-api": "^0.30.0",
     "tar": "^4.4.4"
+    "node-eta": "^0.9.0"
   }
 }
