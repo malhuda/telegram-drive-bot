@@ -86,7 +86,7 @@ There is very little preventing users from using this to mirror pirated content.
 
 9. Start the bot with `npm --max_old_space_size=128 start`
 
-10. Open Telegram, and send `/mirror https://raw.githubusercontent.com/out386/aria-telegram-mirror-bot/master/README.md` to the bot.
+10. Open Telegram, and send `/mirror https://raw.githubusercontent.com/Yash-Garg/telegram-drive-bot/master/README.md` to the bot.
 
 11. In the terminal, it'll ask you to visit an authentication URL. Visit it, grant access, copy the code on that page, and paste it in the terminal.
 
