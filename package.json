@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Ritayan Chakraborty",
+  "author": "Yash Garg",
   "license": "MIT",
   "dependencies": {
     "aria2": "^3.0.1",
