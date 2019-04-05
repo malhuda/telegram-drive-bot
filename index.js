@@ -44,7 +44,7 @@ bot.onText(/^\/source/, (msg) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
   } else {
-    sendMessage(msg, 'You can find my source code here : https://github.com/Yash-Garg/telegram-mirror-bot');
+    sendMessage(msg, 'You can find my source code here : https://github.com/Yash-Garg/telegram-drive-bot');
   }
 });
 
@@ -56,7 +56,7 @@ bot.onText(/^\/mirrortar (.+)/i, (msg, match) => {
   }
 });
 
-bot.onText(/^\/mirror (.+)/i, (msg, match) => {
+bot.onText(/^\/mirrorit (.+)/i, (msg, match) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
   } else {
@@ -84,6 +84,7 @@ bot.on('message', (msg) => {
  * @param {Array} match Message matches
  * @param {boolean} isTar Decides if this download should be archived before upload
  */
+
 function mirror (msg, match, isTar) {
   if (websocketOpened) {
     if (dlVars.isDownloading) {
@@ -100,7 +101,7 @@ function mirror (msg, match, isTar) {
   }
 }
 
-bot.onText(/^\/mirrorStatus/i, (msg) => {
+bot.onText(/^\/mirroritStatus/i, (msg) => {
   if (msgTools.isAuthorized(msg) < 0) {
     sendUnauthorizedMessage(msg);
   } else {
@@ -194,7 +195,7 @@ function stopMirror (msg) {
 
         if (msg && dlVars.tgChatId !== msg.chat.id) {
           // Notify if this is not the chat the download started in
-          sendMessage(msg, 'The download was canceled.');
+          sendMessage(msg, 'The download was cancelled.');
         }
       });
     }
