@@ -88,7 +88,7 @@ bot.on('message', (msg) => {
 function mirror (msg, match, isTar) {
   if (websocketOpened) {
     if (dlVars.isDownloading) {
-      sendMessage(msg, dlVars.tgUsername + ' is mirroring something. Please wait.');
+      sendMessage(msg, dlVars.tgUsername + ' is mirroring something. Please wait else die.');
     } else {
       if (downloadUtils.isDownloadAllowed(match[1])) {
         prepDownload(msg, match[1], isTar);
@@ -120,7 +120,7 @@ function getStatus (msg, callback) {
   if (authorizedCode > -1) {
     if (dlVars.isDownloading) {
       if (dlVars.isUploading) {
-        callback(null, 'Upload in progress.');
+        callback(null, 'Upload is in progress. Please wait.');
       } else {
         ariaTools.getStatus(dlVars.downloadGid, (err, message, filename, filesize) => {
           if (!err) {
@@ -133,10 +133,10 @@ function getStatus (msg, callback) {
         });
       }
     } else {
-      callback(null, 'No active downloads');
+      callback(null, 'No active download.');
     }
   } else {
-    callback(null, `You aren't authorized to use this bot here.`);
+    callback(null, `You aren't qualified to use this bot here.`);
   }
 }
 
@@ -146,7 +146,7 @@ bot.onText(/^\/search (.+)/i, (msg, match) => {
   } else {
     driveList.listFiles(match[1], (err, res) => {
       if (err) {
-        sendMessage(msg, 'Failed to search the list of files');
+        sendMessage(msg, 'Failed to search the list of files.');
       } else {
         sendMessage(msg, res, 60000);
       }
@@ -159,7 +159,7 @@ bot.onText(/^\/getFolder/i, (msg) => {
     sendUnauthorizedMessage(msg);
   } else {
     sendMessage(msg,
-      '<a href = \'' + driveUtils.getFileLink(constants.GDRIVE_PARENT_DIR_ID, true) + '\'>Drive mirror folder</a>',
+      '<a href = \'' + driveUtils.getFileLink(constants.GDRIVE_PARENT_DIR_ID, true) + '\'>Drive Mirror Folder</a>',
       60000);
   }
 });
@@ -200,7 +200,7 @@ function stopMirror (msg) {
       });
     }
   } else if (msg) {
-    sendMessage(msg, 'No download in progress.');
+    sendMessage(msg, 'No active download.');
   }
 }
 
@@ -392,7 +392,7 @@ function initAria2 () {
         console.log('onDownloadComplete: ' + JSON.stringify(err, null, 2));
         clearInterval(statusInterval);
         statusInterval = null;
-        var message = 'Upload failed. Could not get downloaded files.';
+        var message = 'Upload failed. Could not get downloaded file.';
         sendMessageReplyOriginal(message);
         updateAllStatus(message);
         deleteOrigReply();
