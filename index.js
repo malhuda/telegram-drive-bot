@@ -164,7 +164,7 @@ bot.onText(/^\/getFolder/i, (msg) => {
   }
 });
 
-bot.onText(/^\/stopMirror/i, (msg) => {
+bot.onText(/^\/stopit/i, (msg) => {
   var authorizedCode = msgTools.isAuthorized(msg);
   if (authorizedCode > -1 && authorizedCode < 3) {
     stopMirror(msg);
